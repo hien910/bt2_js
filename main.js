@@ -19,7 +19,7 @@ function hangTB(arr){
     }
     return  sum/(arr.length)
 }
-console.log("thứ hạng trung bình của cả lớp: "+ hangTB(grades));
+console.log("thứ hạng trung bình của cả lớp: ", hangTB(grades));
 
 //    2. Viết function tính thứ hạng trung bình của nam trong lớp
 function hangTB_Nam(arr){
@@ -33,7 +33,7 @@ function hangTB_Nam(arr){
     }
     return  sum/count;
 }
-console.log("thứ hạng trung bình của nam trong lớp: "+ hangTB_Nam(grades));
+console.log("thứ hạng trung bình của nam trong lớp: ", hangTB_Nam(grades));
 //    3. Viết function tính thứ hạng trung bình của Nữ trong lớp
 function hangTB_Nu(arr){
     let sum =0;
@@ -46,7 +46,7 @@ function hangTB_Nu(arr){
     }
     return  sum/count;
 }
-console.log("thứ hạng trung bình của Nữ trong lớp: "+ hangTB_Nu(grades));
+console.log("thứ hạng trung bình của Nữ trong lớp: ", hangTB_Nu(grades));
 
 //    4. Viết function tìm học viên Nam có thứ hạng cao nhất trong lớp
 function maxHang_Nam(arr){
@@ -58,11 +58,11 @@ function maxHang_Nam(arr){
     }
     for (let i = 0; i < arr.length; i++) {
         if(arr[i].sex== 'M' && arr[i].grade == max){
-             return console.log(arr[i]);
+             return arr[i];
         }
     }
 }
-console.log("học viên Nam có thứ hạng cao nhất trong lớp: "+ maxHang_Nam(grades));
+console.log("học viên Nam có thứ hạng cao nhất trong lớp: ", maxHang_Nam(grades));
 
 //    5. Viết function tìm học viên Nữ có thứ hạng cao nhất trong lớp
 function maxHang_Nu(arr){
@@ -74,12 +74,12 @@ function maxHang_Nu(arr){
     }
     for (let i = 0; i < arr.length; i++) {
         if(arr[i].sex== 'F' && arr[i].grade == max){
-             return console.log(arr[i]);
+             return arr[i];
         }
     }
     return  max;
 }
-console.log(maxHang_Nu(grades));
+console.log("học viên Nữ có thứ hạng cao nhất trong lớp: ", maxHang_Nu(grades));
 
 //    6. Viết function tìm học viên Nam có thứ hạng thấp nhất trong lớp
 function minHang_Nam(arr){
@@ -91,12 +91,12 @@ function minHang_Nam(arr){
     }
     for (let i = 0; i < arr.length; i++) {
         if(arr[i].sex== 'M' && arr[i].grade == min){
-             return console.log(arr[i]);
+             return arr[i];
         }
     }
     return  min;
 }
-console.log(minHang_Nam(grades));
+console.log("học viên Nam có thứ hạng thấp nhất trong lớp:", minHang_Nam(grades));
 
 //    7. Viết function tìm học viên Nữ có thứ hạng thấp nhất trong lớp
 function minHang_Nu(arr){
@@ -108,32 +108,31 @@ function minHang_Nu(arr){
     }
     for (let i = 0; i < arr.length; i++) {
         if(arr[i].sex== 'F' && arr[i].grade == min){
-             return console.log(arr[i]);
+             return arr[i];
         }
     }
     return  min;
 }
-console.log(minHang_Nu(grades));
+console.log("học viên Nữ có thứ hạng thấp nhất trong lớp: " , minHang_Nu(grades));
 
 //    8. Viết function thứ hạng cao nhất của cả lớp
 function maxGrade(arr){
     let max = 100;
     let n =0;
-    console.log("thứ hạng cao nhất của cả lớp là: ")
+    
     for (let i = 0; i < arr.length; i++) {
         if(max > arr[i].grade ){
             max = arr[i].grade;
             n= i;
         }
     }
-    console.log(arr[n]);
+    console.log("thứ hạng cao nhất của cả lớp là: ",arr[n])
 }
 maxGrade(grades);
 
 
 //    9. Viết function thứ hạng thấp nhất của cả lớp
 function minGrade(arr){
-    console.log("thứ hạng thấp nhất của cả lớp là: ");
     let min = 0;
     let n=0;
     for (let i = 0; i < arr.length; i++) {
@@ -142,7 +141,7 @@ function minGrade(arr){
             n=i;
         }
     }
-    console.log(arr[n]);
+    console.log("thứ hạng thấp nhất của cả lớp là: ",arr[n]);
 }
 minGrade(grades);
 
@@ -157,6 +156,8 @@ function listFemale(arr){
     }
 }
 listFemale(grades);
+
+
 //    11. Viết function sắp xếp tên học viên theo chiều tăng dần của bảng chữ cái
 function sortByName(arr){
     let newGrades = [];
@@ -165,7 +166,7 @@ function sortByName(arr){
     });
     return newGrades;
 }
-console.log(sortByName(grades));
+console.log("sắp xếp tên học viên theo chiều tăng dần của bảng chữ cái", sortByName(grades));
 
 //    12. Viết function sắp xếp thứ hạng học viên theo chiều giảm dần
 function sortByGrade(arr){
@@ -179,7 +180,11 @@ console.log( "sắp xếp thứ hạng học viên theo chiều giảm dần: " 
 
 //    13. Viết function lấy ra học viên Nữ có tên bắt đầu bằng “J”
 function findName_J(arr){
-    return arr.find(item => item.sex == 'F' && item.name[0] == 'J' );
+    const filteredStudents = grades.filter(grades => {
+        return grades.sex == 'F' && grades.name.startsWith('J');
+    });
+    return filteredStudents;
+    // return arr.find(item => item.sex === 'F' && item.name.startsWith('J') );
 }
 console.log("học viên Nữ có tên bắt đầu bằng “J”" ,findName_J(grades));
 
